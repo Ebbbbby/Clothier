@@ -1,2 +1,2 @@
 # Clothier
-A simple site tp check out various clothings
+A simple site to check out various clothing
