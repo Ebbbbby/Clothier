@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <div className="bg-black p-2 w-full">
         <h2 className="text-white font-inter text-2xl tracking-normal leading-none text-center">
-          Wel
+          Clothier
         </h2>
       </div>
       <div className="flex justify-around items-center">
