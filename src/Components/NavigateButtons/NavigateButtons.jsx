@@ -11,7 +11,7 @@ const NavigateButtons = () => {
     "Dresses",
     "Suits",
     "Shoes",
-    "T-Shirt",
+    "T-Shirts",
     "Jeans",
     "Jackets",
     "Bags",
