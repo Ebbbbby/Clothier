@@ -29,6 +29,8 @@ export const cartSlice = createSlice({
                         totalPrice: productId.price,
                         name: productId.name,
                         color: productId.color,
+                        img:productId.img,
+                        text:productId.text
 
 
                     })
