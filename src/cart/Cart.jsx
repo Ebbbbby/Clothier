@@ -1,6 +1,6 @@
 import React from "react";
 import { Dialog, DialogHeader, DialogBody, Button, DialogFooter } from "@material-tailwind/react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Tooltip } from "@material-tailwind/react";
 
 const Cart = ({ openModal, setOpen }) => {
