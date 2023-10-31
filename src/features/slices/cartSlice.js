@@ -11,7 +11,6 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart(state, action) {
             const productId = action.payload;
-            console.log(productId, "Product ID")
             try {
                 const exist = state.cart.find((product) => product.id === productId.id && product.size === productId.size && product.color === productId.color);
                 if (exist) {
@@ -29,8 +28,8 @@ export const cartSlice = createSlice({
                         totalPrice: productId.price,
                         name: productId.name,
                         color: productId.color,
-                        img:productId.img,
-                        text:productId.text
+                        img: productId.img,
+                        text: productId.text
 
 
                     })
@@ -42,8 +41,60 @@ export const cartSlice = createSlice({
             } catch (error) {
                 return error
             }
-        }
+        },
+
+        removeCart(state, action) {
+            const productId = action.payload;
+            try {
+                const exist = state.cart.find(
+                    (product) =>
+                        product.id === productId.id &&
+                        product.size === productId.size &&
+                        product.color === productId.color
+                );
+                if (exist.amount === 1) {
+                    state.cart = state.cart.filter(
+                        (product) =>
+                            product.id !== productId.id ||
+                            product.size !== productId.size ||
+                            product.color !== productId.color
+                    );
+                    state.totalAmount--;
+                    state.totalPrice -= productId.price;
+                } else {
+                    exist.amount--;
+                    exist.totalPrice -= productId.price;
+                    state.totalAmount--;
+                    state.totalPrice -= productId.price;
+                }
+            } catch (err) {
+                return err;
+            }
+        },
+
+
     }
 })
-export const { addToCart } = cartSlice.actions;
+export const { addToCart,removeCart } = cartSlice.actions;
 export default cartSlice.reducer
+
+
+
+// removeCart(action, state) {
+//     const productId = action.payload;
+//     try {
+//         const exist = state.cart.find((product) => product.id === productId.id && product.size === productId.size && product.color === productId.color);
+//         if (exist.amount === 1) {
+//             state.cart = state.cart.filter((product) => product.id !== productId.id || product.size !== productId.size || product.color !== productId.color)
+//             state.totalAmount--;
+//             state.totalPrice += productId.price;
+//         } else {
+//             exist.amount--;
+//             exist.totalPrice -= productId.price;
+//             state.totalAmount--
+//             state.totalPrice -= productId.price
+//         }
+//     } catch (error) {
+//         return error
+//     }
+// }
